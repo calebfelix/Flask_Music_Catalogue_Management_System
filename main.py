@@ -11,8 +11,6 @@ app = Flask(__name__)
 app.secret_key = os.urandom(24)
 
 
-
-
 # conn = mysql.connector.connect(host=db_host, user=db_username, password=db_password, database=db_name)
 # cur = conn.cursor()
 
@@ -33,7 +31,6 @@ def signup():
 
 @app.route('/home')
 def home():
-
     if 'user_id' in session:
         print(f"USER  ======> {session['user_id']}")
         try:
@@ -277,7 +274,7 @@ def playlist():
             cur.close()
             conn.close()
             print("MySQL disconnected...")
-        return render_template("playlist.html", USER_TRACKS = USER_TRACKS)
+        return render_template("playlist.html", USER_TRACKS=USER_TRACKS)
     else:
         return redirect('/')
 
@@ -293,4 +290,4 @@ def delete(info):
 if __name__ == "__main__":
     app.run(debug=True)
 
-# test
+

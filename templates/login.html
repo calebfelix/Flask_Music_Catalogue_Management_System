@@ -33,15 +33,21 @@
         </div>
         <div class="col-md-4">
             <div class="card mt-100 card-att">
-                <div class="card-header sky-line text-white" style="border-top-left-radius: 15px; border-top-right-radius: 15px; font-size:25px; font-weight: 400;">Login</div>
+                <div class="card-header sky-line text-white"
+                     style="border-top-left-radius: 15px; border-top-right-radius: 15px; font-size:25px; font-weight: 400;">
+                    Login
+                </div>
                 <div class="card-body">
                     <form class="form" method="post" action="/login_validation">
                         <label>Email</label><br>
                         <input type="email" class="form-control" name="lemail" required><br>
                         <label>Password</label><br>
-                        <input type="password" class="form-control"  id="myInput" name="lpassword" required>
+                        <input type="password" class="form-control" id="myInput" name="lpassword" required>
 
-                        <p style="font-size:13px; vertical-align: middle;" class="mt-2 ml-2"><input  class="mr-1" style="vertical-align: middle; position: relative; bottom: 1px; " type="checkbox" onclick="myFunction()">
+                        <p style="font-size:13px; vertical-align: middle;" class="mt-2 ml-2"><input class="mr-1"
+                                                                                                    style="vertical-align: middle; position: relative; bottom: 1px; "
+                                                                                                    type="checkbox"
+                                                                                                    onclick="myFunction()">
                             Show Password
                         </p>
 
@@ -69,7 +75,7 @@
 </script>
 <script>
     {#loader screen#}
-    window.addEventListener("load",function () {
+    window.addEventListener("load", function () {
         const loader = document.querySelector(".loader");
         loader.className += " hidden"; //class loader hidden
     });

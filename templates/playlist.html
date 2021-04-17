@@ -92,10 +92,12 @@
                         <div class="col-md-10 card-att" style="display: flex; border-radius: 7px; margin: 30px;">
                             <div class="col-md-3" style="padding-top: 10px; margin-bottom: 10px;">
                                 <a href="#" class="album-poster" data-switch="{{ i }}">
-                                    <img class="poster-attributes" src="https://firebasestorage.googleapis.com/v0/b/test-7bd1e.appspot.com/o/image%2F{{ USER_TRACKS[i].album_link|safe }}.jpg?alt=media">
+                                    <img class="poster-attributes"
+                                         src="https://firebasestorage.googleapis.com/v0/b/test-7bd1e.appspot.com/o/image%2F{{ USER_TRACKS[i].album_link|safe }}.jpg?alt=media">
                                 </a>
                             </div>
-                            <div class="info_container" style="padding: 20px; width: 100%; height: 100%;font-weight: 500;margin-left: 30px">
+                            <div class="info_container"
+                                 style="padding: 20px; width: 100%; height: 100%;font-weight: 500;margin-left: 30px">
                                 <h4> {{ USER_TRACKS[i].track_name }}</h4><br>
                                 <p>{{ USER_TRACKS[i].artist }}</p>
                                 <p> {{ USER_TRACKS[i].genre }}</p>
@@ -118,10 +120,10 @@
                         </div>
                     {% endfor %}
                 {% endif %}
+            </div>
         </div>
-    </div>
 
-</div>
+    </div>
 
 
 </div>

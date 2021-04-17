@@ -23,94 +23,97 @@
     </style>
 </head>
 <body class="bg-body">
-{#diff loader#}
-<div id="loading"></div>
-    <div id="content">
-{#loader#}
-<div class="loader">
-    <img src="{{ url_for('static', filename='loading.gif') }}" alt="Loading..."/>
-</div>
+<div id="content">
+    {#loader#}
+    <div class="loader">
+        <img src="{{ url_for('static', filename='loading.gif') }}" alt="Loading..."/>
+    </div>
 
 
+    <div>
+        <header class="p-3 bg-dark text-white">
+            <div class="container">
+                <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
 
-<div>
-    <header class="p-3 bg-dark text-white">
-        <div class="container">
-            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                    <img src="{{ url_for('static', filename='small.png') }}" width="32" height="30" alt="">
+                    <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                        <li><a href="/" class="nav-link px-5 text-white">Home</a></li>
+                        <li><a href="#" class="nav-link px-5 text-white">Explore</a></li>
+                        <li><a href="/playlist" class="nav-link px-5 text-white">Playlist</a></li>
+                        <li><a href="/add_track" class="nav-link px-5 text-secondary">Add Track</a></li>
+                        <li><a href="/index" class="nav-link px-5 text-white">index</a></li>
+                        <li><a href="/logout" class="nav-link px-5 text-white">Logout</a></li>
+                    </ul>
 
-                <img src="{{ url_for('static', filename='small.png') }}" width="32" height="30" alt="">
-                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                    <li><a href="/" class="nav-link px-5 text-white">Home</a></li>
-                    <li><a href="#" class="nav-link px-5 text-white">Explore</a></li>
-                    <li><a href="/playlist" class="nav-link px-5 text-white">Playlist</a></li>
-                    <li><a href="/add_track" class="nav-link px-5 text-secondary">Add Track</a></li>
-                    <li><a href="/index" class="nav-link px-5 text-white">index</a></li>
-                    <li><a href="/logout" class="nav-link px-5 text-white">Logout</a></li>
-                </ul>
-
-                {#                <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">#}
-                {#                    <input type="search" class="form-control form-control-dark" placeholder="Search...">#}
-                {#                </form>#}
-                {##}
-                {#                <div class="text-end">#}
-                {#                    <button type="button" class="btn btn-outline-light me-2">Login</button>#}
-                {#                    <button type="button" class="btn btn-warning">Sign-up</button>#}
-                {#                </div>#}
+                    {#                <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">#}
+                    {#                    <input type="search" class="form-control form-control-dark" placeholder="Search...">#}
+                    {#                </form>#}
+                    {##}
+                    {#                <div class="text-end">#}
+                    {#                    <button type="button" class="btn btn-outline-light me-2">Login</button>#}
+                    {#                    <button type="button" class="btn btn-warning">Sign-up</button>#}
+                    {#                </div>#}
+                </div>
             </div>
-        </div>
-    </header>
-</div>
-<div class="container mb-3">
-    <div class="row">
-        <div class="col-md-12 ">
-            <div class="card mt-50 card-att2">
-                <div class="card-body" style="padding: 2rem">
+        </header>
+    </div>
+    <div class="container mb-3">
+        <div class="row">
+            <div class="col-md-12 ">
+                <div class="card mt-50 card-att2">
+                    <div class="card-body" style="padding: 2rem">
 
 
-                    <form class="form" method="post" action="/upload_track" enctype="multipart/form-data">
-                        <div class="row">
-                            <div class="col-md-6 line">
+                        <form class="form" method="post" action="/upload_track" enctype="multipart/form-data">
+                            <div class="row">
+                                <div class="col-md-6 line">
 
-                                <label>Track Name</label><br>
-                                <input required type="text" class="form-control my-box" id="atrackname" name="atrackname" ><br>
-                                <label>Artist</label><br>
-                                <input required type="text" class="form-control my-box" id="aartist" name="aartist" ><br>
-                                <label>Genre</label><br>
-                                <input required type="text" class="form-control my-box" id="agenre" name="agenre" ><br>
+                                    <label>Track Name</label><br>
+                                    <input required type="text" class="form-control my-box" id="atrackname"
+                                           name="atrackname"><br>
+                                    <label>Artist</label><br>
+                                    <input required type="text" class="form-control my-box" id="aartist" name="aartist"><br>
+                                    <label>Genre</label><br>
+                                    <input required type="text" class="form-control my-box" id="agenre"
+                                           name="agenre"><br>
 
-                                <label class="form-label" for="customFile">Track File</label>
-                                <input required type="file" accept="audio/mp3, audio/wav" name="atrackfile" class="form-control my-box" id="customFile" /><br>
+                                    <label class="form-label" for="customFile">Track File</label>
+                                    <input required type="file" accept="audio/mp3, audio/wav" name="atrackfile"
+                                           class="form-control my-box" id="customFile"/><br>
 
-                                <label>Description</label><br>
-                                <textarea required id="adescription" name="adescription" rows="4" class="form-control my-box" ></textarea><br>
+                                    <label>Description</label><br>
+                                    <textarea required id="adescription" name="adescription" rows="4"
+                                              class="form-control my-box"></textarea><br>
 
-                                <input type="submit" id="buttonn" onclick="loading();" name="buttonn" class="btn btn-primary btn-block byn-lg" value="Add Track">
+                                    <input type="submit" id="buttonn" onclick="loading();" name="buttonn"
+                                           class="btn btn-primary btn-block byn-lg" value="Add Track">
 
-                            </div>
-                            <div class="col-md-6 opp-line">
-                                <h3>Album Cover Image</h3><br>
-                                <div class="image-preview" id="image-preview">
-                                    <img src="" alt="Image Preview" class="image-preview__image"
-                                         style="border-radius: 7px;">
-                                    <span class="image-preview__default-text">Image Preview</span>
                                 </div>
-                                <br>
-                                <div class="col-md-8">
-                                    <input required type="file" accept="image/png, image/jpeg" name="aalbum-cover" id="aalbum-cover" class="form-control my-box"
-                                           ></div>
+                                <div class="col-md-6 opp-line">
+                                    <h3>Album Cover Image</h3><br>
+                                    <div class="image-preview" id="image-preview">
+                                        <img src="" alt="Image Preview" class="image-preview__image"
+                                             style="border-radius: 7px;">
+                                        <span class="image-preview__default-text">Image Preview</span>
+                                    </div>
+                                    <br>
+                                    <div class="col-md-8">
+                                        <input required type="file" accept="image/png, image/jpeg" name="aalbum-cover"
+                                               id="aalbum-cover" class="form-control my-box"
+                                        ></div>
 
+                                </div>
                             </div>
-                        </div>
-                    </form>
+                        </form>
 
+
+                    </div>
 
                 </div>
-
             </div>
         </div>
     </div>
 </div>
-    </div>
 
 <script>
     const albumCover = document.getElementById("aalbum-cover");
@@ -145,7 +148,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script>
     {#loader screen#}
-    window.addEventListener("load",function () {
+    window.addEventListener("load", function () {
         const loader = document.querySelector(".loader");
         loader.className += " hidden"; //class loader hidden
     });
@@ -153,28 +156,32 @@
 
 
 <script>
-    {#button disable#}
+    {#loading overlay disable#}
     document.getElementById("buttonn").onclick = disableScreen;
 
-function disableScreen() {
-    // creates <div class="overlay"></div> and
-    // adds it to the DOM
+    function disableScreen() {
+        // creates <div class="overlay"></div> and
+        // adds it to the DOM
 
-  var r = confirm("Are you Sure you wanna add this track?");
-  if (r == true &&
-      document.getElementById("atrackname")>0 &&
-      document.getElementById("aartist")>0 &&
-      document.getElementById("agenre")>0 &&
-      document.getElementById("customFile")>0 &&
-      document.getElementById("adescription")>0 &&
-      document.getElementById("aalbum-cover")>0
-  ) {
-    var div= document.createElement("div");
-    div.className += "overlay";
-    document.body.appendChild(div);
-  } else {}
+        var r = confirm("Are you Sure you wanna add this track?");
+        if (r == true
+            &&
+            document.getElementById("atrackname").value != "" &&
+            document.getElementById("aartist").value != "" &&
+            document.getElementById("agenre").value != "" &&
+            document.getElementById("customFile").value != "" &&
+            document.getElementById("adescription").value != "" &&
+            document.getElementById("aalbum-cover").value != ""
+        ) {
+            console.log("it passes");
+            var div = document.createElement("div");
+            div.className += "overlay";
+            document.body.appendChild(div);
+        } else {
+            return false;
+        }
 
-}
+    }
 </script>
 
 
