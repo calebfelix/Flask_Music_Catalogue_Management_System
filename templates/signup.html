@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Signup</title>
+    <link rel="shortcut icon" type="img/png" href="{{ url_for('static', filename='small.png') }}">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+
+
+</head>
+<body class="bg-body">
+
+{#loader#}
+
+<div class="loader">
+    <img src="{{ url_for('static', filename='loading.gif') }}" alt="Loading..."/>
+</div>
+
+<nav class="navbar">
+    <a class="navbar-brand text-dark" href="#" style="font-weight: 600;">
+        <img src="{{ url_for('static', filename='small.png') }}" width="30" height="30" class="d-inline-block align-top"
+             alt="">
+        Music Catalogue Management System
+    </a>
+</nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-7">
+            <h1 class="text-dark display-4 mt-100" style="font-size:80px; font-weight: 400;">Music in the soul can be heard by the universe</h1>
+        </div>
+        <div class="col-md-5">
+            <div class="card mt-10 card-att">
+                <div class="card-header sky-line text-white" style="border-top-left-radius: 15px; border-top-right-radius: 15px; font-size:25px; font-weight: 400;" >Sign Up</div>
+                <div class="card-body">
+                    <form class="form" method="post" onsubmit="return passfunc()" action="/add_user">
+
+                        {#                        <label>First Name</label><br>#}
+                        {#                        <input type="text" class="form-control" name="sfirstname"><br>#}
+                        {#                        <label>Last Name</label><br>#}
+                        {#                        <input type="text" class="form-control" name="slastname"><br>#}
+
+                        <div class="form-row">
+                            <div class="col">
+                                <input type="text" class="form-control" placeholder="First name" name="sfirstname" required>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control" placeholder="Last name" name="slastname" required>
+                            </div>
+
+                        </div>
+                        <br>
+                        <input type="email" class="form-control" name="semail" placeholder="Email" required><br>
+
+                        <input type="text" class="form-control" name="susername" placeholder="Username" required><br>
+
+
+                        <input type="text" class="form-control" name="sphone" placeholder="Phone No" required><br>
+
+
+                        <div class="form-row">
+                            <div class="col">
+                                <select class="custom-select" name="sgender" required>
+                                    <option value="" disabled selected>Gender</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Others">Others</option>
+                                </select>
+                            </div>
+                            <div class="col">
+                                <input placeholder="Date of Birth" name="sdob" class="form-control" type="text"
+                                       onfocus="(this.type = 'date')" id="date" required>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control" placeholder="Country" name="scountry" required>
+                            </div>
+                        </div><br>
+
+                        <input class="form-control" name="spassword" placeholder="Password" type="password"
+                               data-toggle="password" data-eye-open-class="fa-toggle-off"
+                               data-eye-close-class="fa-toggle-on" id="password" onkeyup='check();' required>
+                        <br>
+                        <input class="form-control" name="sconfirmpassword" placeholder="Confirm Password"
+                               type="password" data-toggle="password" data-eye-open-class="fa-toggle-off"
+                               data-eye-close-class="fa-toggle-on" id="confirm_password" onkeyup='check();' required>
+                        <br>
+                        <br>
+                        <input type="submit" class="btn btn-primary btn-block byn-lg" value="Signup">
+                    </form>
+                    <br>
+                    <p style="text-align: center;">Already a member? <a href="/" style="text-decoration:none;">Login</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function passfunc() {
+        var pass = document.getElementById("password").value;
+        var conpass = document.getElementById("confirm_password").value;
+        if(pass !== conpass){
+            alert("password not matching");
+            return false;
+        }
+    }
+</script>
+<script>
+    {#loader screen#}
+    window.addEventListener("load",function () {
+        const loader = document.querySelector(".loader");
+        loader.className += " hidden"; //class loader hidden
+    });
+</script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+<script src="https://unpkg.com/bootstrap-show-password@1.2.1/dist/bootstrap-show-password.min.js"></script>
+<script src="jquery.min.js"></script>
+<script src="bootstrap.min.js"></script>
+<script src="bootstrap-show-password.js"></script>
+
+
+</body>
+
+</html>

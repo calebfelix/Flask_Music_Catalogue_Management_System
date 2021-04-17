@@ -1,0 +1,15 @@
+config = {
+    "apiKey": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    "authDomain": "xxxxxxxxxxxxxxxxxxxxxxxx",
+    "projectId": "xxxxxxxx",
+    "storageBucket": "xxxxxxxxxxxxxxxxxxxxx",
+    "messagingSenderId": "xxxxxxxxxxxxxxxx",
+    "appId": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    "measurementId": "xxxxxxxxxxxxx",
+    "databaseURL": "xxxxxxxxxxxxxxxxx"
+}
+
+db_host = "database host"
+db_username = "database_user"
+db_password = "database_password"
+db_name = "database_name"
