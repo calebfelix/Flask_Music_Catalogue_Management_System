@@ -180,7 +180,7 @@ def add_track():
     if 'user_id' in session:
         return render_template('addTrack.html')
     else:
-        return render_template("login.html")
+        return redirect('/')
 
 
 @app.route('/upload_track', methods=['POST', 'GET'])
