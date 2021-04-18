@@ -5,6 +5,8 @@ html {
     overflow-y: scroll;
 }
 
+body { padding-right: 0 !important }
+
 ::-webkit-scrollbar {
     width: 10px;
 }
@@ -206,6 +208,8 @@ span {
     z-index: 1000;
     top: 0px;
     left: 0px;
+    cursor: wait;
     opacity: .5; /* in FireFox */
     filter: alpha(opacity=50); /* in IE */
 }
+

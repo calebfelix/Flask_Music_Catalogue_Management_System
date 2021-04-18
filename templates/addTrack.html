@@ -23,6 +23,30 @@
     </style>
 </head>
 <body class="bg-body">
+
+{#modal#}
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true"
+     id="mi-modal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                {#                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>#}
+                {#                </button>#}
+                <h4 class="modal-title" id="myModalLabel">Confirmation</h4>
+            </div>
+            <div class="modal-body">
+                <p>Do you want to save changes you made to document before upload?</p>
+                {#                    <p class="text-warning"><small>If you don't save, your changes will be lost.</small></p>#}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="modal-btn-yes">Yes</button>
+                <button type="button" class="btn btn-secondary" id="modal-btn-no">No</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{#<div class="alert" role="alert" id="result"></div>#}
 <div id="content">
     {#loader#}
     <div class="loader">
@@ -38,7 +62,7 @@
                     <img src="{{ url_for('static', filename='small.png') }}" width="32" height="30" alt="">
                     <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                         <li><a href="/" class="nav-link px-5 text-white">Home</a></li>
-                        <li><a href="#" class="nav-link px-5 text-white">Explore</a></li>
+                        {#                        <li><a href="#" class="nav-link px-5 text-white">Explore</a></li>#}
                         <li><a href="/playlist" class="nav-link px-5 text-white">Playlist</a></li>
                         <li><a href="#" class="nav-link px-5 text-secondary">Add Track</a></li>
                         <li><a href="/index" class="nav-link px-5 text-white">index</a></li>
@@ -56,6 +80,8 @@
                 </div>
             </div>
         </header>
+
+
     </div>
     <div class="container mb-3">
         <div class="row">
@@ -115,6 +141,7 @@
     </div>
 </div>
 
+
 <script>
     const albumCover = document.getElementById("aalbum-cover");
     const previewContainer = document.getElementById("image-preview");
@@ -155,23 +182,59 @@
 </script>
 
 
+{#<script>#}
+{#loading overlay disable#}
+{#    document.getElementById("buttonn").onclick = disableScreen;#}
+{##}
+{#    function disableScreen() {#}
+{#        // creates <div class="overlay"></div> and#}
+{#        // adds it to the DOM#}
+{##}
+{#        var r = confirm("Are you Sure you wanna add this track?");#}
+{#        if (r == true#}
+{#            &&#}
+{#            document.getElementById("atrackname").value != "" &&#}
+{#            document.getElementById("aartist").value != "" &&#}
+{#            document.getElementById("agenre").value != "" &&#}
+{#            document.getElementById("customFile").value != "" &&#}
+{#            document.getElementById("adescription").value != "" &&#}
+{#            document.getElementById("aalbum-cover").value != ""#}
+{#        ) {#}
+{#            console.log("it passes");#}
+{#            var div = document.createElement("div");#}
+{#            div.className += "overlay";#}
+{#            document.body.appendChild(div);#}
+{#        } else {#}
+{#            return false;#}
+{#        }#}
+{##}
+{#    }#}
+{#</script>#}
 <script>
-    {#loading overlay disable#}
-    document.getElementById("buttonn").onclick = disableScreen;
+    var modalConfirm = function (callback) {
+        $("#buttonn").on("click", function () {
+            $("#mi-modal").modal('show');
+        });
 
-    function disableScreen() {
-        // creates <div class="overlay"></div> and
-        // adds it to the DOM
+        $("#modal-btn-yes").on("click", function () {
+            callback(true);
+            $("#mi-modal").modal('hide');
+        });
 
-        var r = confirm("Are you Sure you wanna add this track?");
-        if (r == true
+        $("#modal-btn-no").on("click", function () {
+            callback(false);
+            $("#mi-modal").modal('hide');
+        });
+    };
+    modalConfirm(function (confirm) {
+        if (confirm
             &&
-            document.getElementById("atrackname").value != "" &&
-            document.getElementById("aartist").value != "" &&
-            document.getElementById("agenre").value != "" &&
-            document.getElementById("customFile").value != "" &&
-            document.getElementById("adescription").value != "" &&
-            document.getElementById("aalbum-cover").value != ""
+            document.getElementById("atrackname").value !== "" &&
+            document.getElementById("aartist").value !== "" &&
+            document.getElementById("agenre").value !== "" &&
+            document.getElementById("customFile").value !== "" &&
+            document.getElementById("adescription").value !== "" &&
+            document.getElementById("aalbum-cover").value !== ""
         ) {
             console.log("it passes");
             var div = document.createElement("div");
@@ -180,10 +243,8 @@
         } else {
             return false;
         }
-
-    }
+    });
 </script>
-
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"

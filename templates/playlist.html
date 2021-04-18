@@ -37,6 +37,28 @@
 </head>
 <body class="bg-body">
 
+{#modal#}
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true"
+     id="mi-modal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                {#                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>#}
+                {#                </button>#}
+                <h4 class="modal-title" id="myModalLabel">Confirmation</h4>
+            </div>
+            <div class="modal-body">
+                <p>Do you want to save changes you made to document before upload?</p>
+                {#                    <p class="text-warning"><small>If you don't save, your changes will be lost.</small></p>#}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="modal-btn-yes">Yes</button>
+                <button type="button" class="btn btn-secondary" id="modal-btn-no">No</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 {#loader#}
 
 <div class="loader">
@@ -55,7 +77,7 @@
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
 
                     <li><a href="/" class="nav-link px-5 text-white">Home</a></li>
-                    <li><a href="#" class="nav-link px-5 text-white">Explore</a></li>
+{#                    <li><a href="#" class="nav-link px-5 text-white">Explore</a></li>#}
                     <li><a href="#" class="nav-link px-5  text-secondary">Playlist</a></li>
                     <li><a href="/add_track" class="nav-link px-5 text-white">Add Track</a></li>
                     <li><a href="/index" class="nav-link px-5 text-white">index</a></li>
@@ -106,7 +128,7 @@
                             <div class="button_area" style="width: 100%; height: 100%; position: relative;">
                                 <div class="btncontainer"
                                      style="position: absolute;top: 50%;left: 50%;margin: -25px 0 0 -25px; ">
-                                    <a class="btn btn-outline-danger" style="margin: 10px"
+                                    <a class="btn btn-outline-danger" style="margin: 10px" id="del-btn"
                                        href="/delete/{{ USER_TRACKS[i].track_id|safe }}|{{ USER_TRACKS[i].album_link|safe }}|{{ USER_TRACKS[i].track_link|safe }}">
                                         DELETE
                                     </a>
@@ -140,7 +162,9 @@
         integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc"
         crossorigin="anonymous"></script>
 
+{#jQuery#}
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
 {#player#}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.js"
@@ -182,8 +206,33 @@
         const loader = document.querySelector(".loader");
         loader.className += " hidden"; //class loader hidden
     });
+</script>
+<script>
+    var modalConfirm = function (callback) {
+        $("#del-btn").on("click", function () {
+            $("#mi-modal").modal('show');
+        });
 
+        $("#modal-btn-yes").on("click", function () {
+            callback(true);
+            $("#mi-modal").modal('hide');
+        });
 
+        $("#modal-btn-no").on("click", function () {
+            callback(false);
+            $("#mi-modal").modal('hide');
+        });
+    };
+    modalConfirm(function (confirm) {
+        if (confirm) {
+            console.log("it passes");
+            var div = document.createElement("div");
+            div.className += "overlay";
+            document.body.appendChild(div);
+        } else {
+            return false;
+        }
+    });
 </script>
 
 </body>
